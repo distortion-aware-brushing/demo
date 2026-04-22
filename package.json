@@ -1,0 +1,26 @@
+{
+  "name": "dab-demo",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview --host 0.0.0.0"
+  },
+  "dependencies": {
+    "@dabrush/preprocess-js": "file:../dab-preprocess-js",
+    "@dabrush/schema": "file:../dab-schema",
+    "@dabrush/web": "file:../dab-web",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.20",
+    "@types/react-dom": "^18.3.6",
+    "@vitejs/plugin-react": "^4.4.1",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.3"
+  },
+  "license": "MIT"
+}

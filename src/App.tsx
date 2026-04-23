@@ -50,7 +50,7 @@ export default function App() {
   const [showingOriginal, setShowingOriginal] = useState(false);
 
   useEffect(() => {
-    fetch("/samples/fmnist-small-raw.json")
+    fetch(`${import.meta.env.BASE_URL}samples/fmnist-small-raw.json`)
       .then((response) => response.json())
       .then((raw) => {
         setDataset(buildDataset(parseRawJson(raw)));

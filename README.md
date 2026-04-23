@@ -26,6 +26,19 @@ The demo depends on the library repos through GitHub URLs, not npm packages. Run
 - `github:distortion-aware-brushing/schema#main`
 - `github:distortion-aware-brushing/web#main`
 
+## GitHub Pages
+
+The demo is deployed from the `main` branch with GitHub Actions:
+
+[https://distortion-aware-brushing.github.io/demo/](https://distortion-aware-brushing.github.io/demo/)
+
+The Vite `base` path is `/demo/`, so local production previews should be opened at `/demo/`:
+
+```bash
+yarn build
+yarn preview
+```
+
 ## Included Data
 
 The default sample is a 300-point Fashion-MNIST subset:

@@ -160,24 +160,28 @@
     "@babel/helper-string-parser" "^7.27.1"
     "@babel/helper-validator-identifier" "^7.28.5"
 
-"@dabrush/engine@file:../dab-engine":
+"@dabrush/engine@github:distortion-aware-brushing/engine#main":
   version "0.1.0"
+  resolved "https://codeload.github.com/distortion-aware-brushing/engine/tar.gz/388243dcd239a477deca9016f6b8cba8f362db27"
   dependencies:
-    "@dabrush/schema" "file:../../../../Library/Caches/Yarn/v6/npm-@dabrush-engine-0.1.0-50465f66-1d2d-4268-bca3-7577f1995a08-1776843781683/node_modules/@dabrush/dab-schema"
+    "@dabrush/schema" "github:distortion-aware-brushing/schema#main"
 
-"@dabrush/preprocess-js@file:../dab-preprocess-js":
+"@dabrush/preprocess-js@github:distortion-aware-brushing/preprocess-js#main":
   version "0.1.0"
+  resolved "https://codeload.github.com/distortion-aware-brushing/preprocess-js/tar.gz/9f39fcf4059a96833db3870a8dce0b21d998efef"
   dependencies:
-    "@dabrush/schema" "file:../../../../Library/Caches/Yarn/v6/npm-@dabrush-preprocess-js-0.1.0-5eac2187-0bf0-4816-ab85-10468d62d15d-1776843781671/node_modules/@dabrush/dab-schema"
+    "@dabrush/schema" "github:distortion-aware-brushing/schema#main"
 
-"@dabrush/schema@file:../dab-schema":
+"@dabrush/schema@github:distortion-aware-brushing/schema#main":
   version "0.1.0"
+  resolved "https://codeload.github.com/distortion-aware-brushing/schema/tar.gz/b83bdbd304f066fb03a288ac50d7b9f3c6f868c1"
 
-"@dabrush/web@file:../dab-web":
+"@dabrush/web@github:distortion-aware-brushing/web#main":
   version "0.1.0"
+  resolved "https://codeload.github.com/distortion-aware-brushing/web/tar.gz/ec9b9666841a9e81c14437b9acd7613f364c910b"
   dependencies:
-    "@dabrush/engine" "file:../../../../Library/Caches/Yarn/v6/npm-@dabrush-web-0.1.0-c0542af6-d70b-4a4f-814b-bbb4796012ac-1776843781674/node_modules/@dabrush/dab-engine"
-    "@dabrush/schema" "file:../../../../Library/Caches/Yarn/v6/npm-@dabrush-web-0.1.0-c0542af6-d70b-4a4f-814b-bbb4796012ac-1776843781674/node_modules/@dabrush/dab-schema"
+    "@dabrush/engine" "github:distortion-aware-brushing/engine#main"
+    "@dabrush/schema" "github:distortion-aware-brushing/schema#main"
     d3 "^7.9.0"
 
 "@esbuild/aix-ppc64@0.25.12":

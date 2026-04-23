@@ -20,6 +20,12 @@ yarn dev
 
 Open the printed Vite URL.
 
+The demo depends on the library repos through GitHub URLs, not npm packages. Running `yarn install` fetches:
+
+- `github:distortion-aware-brushing/preprocess-js#main`
+- `github:distortion-aware-brushing/schema#main`
+- `github:distortion-aware-brushing/web#main`
+
 ## Included Data
 
 The default sample is a 300-point Fashion-MNIST subset:

@@ -9,9 +9,9 @@
     "preview": "vite preview --host 0.0.0.0"
   },
   "dependencies": {
-    "@dabrush/preprocess-js": "file:../dab-preprocess-js",
-    "@dabrush/schema": "file:../dab-schema",
-    "@dabrush/web": "file:../dab-web",
+    "@dabrush/preprocess-js": "github:distortion-aware-brushing/preprocess-js#main",
+    "@dabrush/schema": "github:distortion-aware-brushing/schema#main",
+    "@dabrush/web": "github:distortion-aware-brushing/web#main",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },

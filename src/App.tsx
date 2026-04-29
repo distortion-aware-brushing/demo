@@ -13,6 +13,7 @@ const techniqueLabels: Record<BrushingTechnique, string> = {
   ddb: "Data-driven brushing"
 };
 const CANVAS_SIZE = 620;
+const GUIDE_STORAGE_KEY = "dabrush-demo-guide-dismissed";
 
 async function fileText(file: File): Promise<string> {
   return file.text();
@@ -48,6 +49,10 @@ export default function App() {
   const [ldCsv, setLdCsv] = useState<File | null>(null);
   const [controller, setController] = useState<BrushingCanvasController | null>(null);
   const [showingOriginal, setShowingOriginal] = useState(false);
+  const [showGuide, setShowGuide] = useState(() => {
+    if (typeof window === "undefined") return true;
+    return window.localStorage.getItem(GUIDE_STORAGE_KEY) !== "true";
+  });
 
   useEffect(() => {
     fetch(`${import.meta.env.BASE_URL}samples/fmnist-small-raw.json`)
@@ -93,6 +98,11 @@ export default function App() {
     }
   };
 
+  const dismissGuide = () => {
+    window.localStorage.setItem(GUIDE_STORAGE_KEY, "true");
+    setShowGuide(false);
+  };
+
   return (
     <main className="app">
       <header className="appHeader">
@@ -103,6 +113,30 @@ export default function App() {
       </header>
 
       {error && <p className="error">{error}</p>}
+
+      {showGuide && (
+        <div className="guideOverlay" role="dialog" aria-modal="true" aria-labelledby="guide-title">
+          <div className="guideDialog">
+            <h2 id="guide-title">How to use Distortion-aware brushing</h2>
+            <ol>
+              <li>
+                Hover over the points you want to brush and wait a moment. The nearby points will relocate to show
+                attraction and repulsion in the original high-dimensional space.
+              </li>
+              <li>
+                Press and drag to start brushing. After another short moment, the lens appears and the brushed region
+                keeps updating as you move.
+              </li>
+              <li>
+                Use <strong>See Original</strong> to compare the current relocated view with the original projection.
+              </li>
+            </ol>
+            <button type="button" onClick={dismissGuide}>
+              Start brushing
+            </button>
+          </div>
+        </div>
+      )}
 
       <section className="workspace">
         <div className="canvasPanel">

@@ -38,6 +38,18 @@ function buildDataset(raw: DabRawInput): DabDataset {
   });
 }
 
+function downloadJson(filename: string, value: unknown): void {
+  const blob = new Blob([JSON.stringify(value, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+}
+
 export default function App() {
   const [dataset, setDataset] = useState<DabDataset | null>(null);
   const [technique, setTechnique] = useState<BrushingTechnique>("dab");
@@ -101,6 +113,33 @@ export default function App() {
   const dismissGuide = () => {
     window.localStorage.setItem(GUIDE_STORAGE_KEY, "true");
     setShowGuide(false);
+  };
+
+  const removeBrush = (id: number) => {
+    controller?.removeBrush(id);
+    setShowingOriginal(false);
+  };
+
+  const saveGroups = () => {
+    if (!dataset) return;
+    downloadJson("dabrush-groups.json", {
+      schemaVersion: "dabrush-groups-v1",
+      generatedAt: new Date().toISOString(),
+      dataset: {
+        points: dataset.hd.length,
+        hdDimensions: dataset.hd[0]?.length ?? 0,
+        ldDimensions: dataset.ld[0]?.length ?? 0
+      },
+      technique,
+      groups: brushes.map((brush) => ({
+        id: brush.id,
+        label: `C${brush.id + 1}`,
+        color: brush.color,
+        isCurrent: brush.isCurrent,
+        count: brush.points.length,
+        points: brush.points
+      }))
+    });
   };
 
   return (
@@ -240,11 +279,26 @@ export default function App() {
             </button>
           </section>
 
-          <h2>Brushes</h2>
+          <div className="brushHeader">
+            <h2>Brushes</h2>
+            <button type="button" onClick={saveGroups} disabled={!dataset || brushes.length === 0}>
+              Download Groups
+            </button>
+          </div>
           {brushes.length === 0 && <p>No brush activity yet.</p>}
           {brushes.map((brush) => (
             <div className="brushRow" key={brush.id}>
               <span style={{ backgroundColor: brush.color }} />
+              <button
+                type="button"
+                className="trashButton"
+                onClick={() => removeBrush(brush.id)}
+                disabled={!controller || brushes.length <= 1}
+                aria-label={`Remove C${brush.id + 1}`}
+                title={`Remove C${brush.id + 1}`}
+              >
+                Trash
+              </button>
               <strong>C{brush.id + 1}</strong>
               <em>{brush.points.length} points</em>
             </div>

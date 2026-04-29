@@ -178,7 +178,7 @@
 
 "@dabrush/web@github:distortion-aware-brushing/web#main":
   version "0.1.0"
-  resolved "https://codeload.github.com/distortion-aware-brushing/web/tar.gz/ec9b9666841a9e81c14437b9acd7613f364c910b"
+  resolved "https://codeload.github.com/distortion-aware-brushing/web/tar.gz/81e81720973b1f99d8a40a3c465447b681f843f2"
   dependencies:
     "@dabrush/engine" "github:distortion-aware-brushing/engine#main"
     "@dabrush/schema" "github:distortion-aware-brushing/schema#main"
